@@ -1,0 +1,12 @@
+<Application 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ScratchApp"
+    x:Class="ScratchApp.App">
+    <Application.DataTemplates>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Dark"/>
+    </Application.Styles>
+</Application>
