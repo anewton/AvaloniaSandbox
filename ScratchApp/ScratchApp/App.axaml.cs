@@ -22,7 +22,7 @@ public partial class App : Application
         serviceCollection.AddScoped<AppViewModel>();
         serviceCollection.AddScoped<MainViewModel>();
 
-        // Give a constructor in MainWindow the IServiceProvider so it can set DataContext in the constructor
+        // Give a constructor in MainWindow the MainViewModel so it can set DataContext in the constructor
         serviceCollection.AddSingleton((serviceProvider) => new MainWindow(serviceProvider.GetRequiredService<MainViewModel>()));
         _serviceProvider = serviceCollection.BuildServiceProvider();
 
