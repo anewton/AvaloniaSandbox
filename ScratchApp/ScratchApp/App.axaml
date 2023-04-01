@@ -2,7 +2,27 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ScratchApp"
-    x:Class="ScratchApp.App">
+    x:Class="ScratchApp.App"
+    xmlns:vm="clr-namespace:ScratchApp.ViewModels;assembly=ScratchApp"
+    x:DataType="vm:AppViewModel"
+    x:CompileBindings="True">
+    <NativeMenu.Menu>
+        <NativeMenu>
+            <NativeMenuItem Header="Exit" Command="{Binding ExitCommand}" />
+        </NativeMenu>
+    </NativeMenu.Menu>
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon Icon="/Assets/avalonia-logo.ico" ToolTipText="{Binding ViewTitle}">
+                <TrayIcon.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Header="Exit" Command="{Binding ExitCommand}" />
+                    </NativeMenu>
+                </TrayIcon.Menu>
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
+    
     <Application.DataTemplates>
     </Application.DataTemplates>
 

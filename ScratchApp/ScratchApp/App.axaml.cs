@@ -9,6 +9,8 @@ namespace ScratchApp;
 
 public partial class App : Application
 {
+    private ServiceProvider? _serviceProvider;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -17,15 +19,21 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var serviceCollection = new ServiceCollection();
-        serviceCollection.AddScoped<ViewLocator>();
+        serviceCollection.AddScoped<AppViewModel>();
         serviceCollection.AddScoped<MainViewModel>();
-        serviceCollection.AddSingleton<MainWindow>((serviceProvider) => new MainWindow() { DataContext = serviceProvider.GetService<ViewLocator>()?.MainVM });
-        var serviceProvider = serviceCollection.BuildServiceProvider();
+
+        // Give a constructor in MainWindow the IServiceProvider so it can set DataContext in the constructor
+        serviceCollection.AddSingleton((serviceProvider) => new MainWindow(serviceProvider.GetRequiredService<MainViewModel>()));
+        _serviceProvider = serviceCollection.BuildServiceProvider();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = serviceProvider.GetService<MainWindow>();
+            // Set the MainWindow
+            desktop.MainWindow = _serviceProvider.GetService<MainWindow>();
         }
+
+        // Set App DataContext
+        DataContext = _serviceProvider.GetService<AppViewModel>();
 
         base.OnFrameworkInitializationCompleted();
     }
