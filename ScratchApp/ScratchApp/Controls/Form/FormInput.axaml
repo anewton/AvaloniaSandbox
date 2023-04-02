@@ -1,0 +1,69 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ScratchApp.Controls.Form">
+    <Design.PreviewWith>
+        <controls:FormInput />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|FormInput">
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid
+                    ShowGridLines="False"
+                    Background="Transparent"
+                    RowDefinitions="Auto,Auto,Auto"
+                    ClipToBounds="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"  />
+                        <ColumnDefinition MinWidth="120" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Name="PART_Label"
+                        Margin="0,0,6,0"
+                        IsTabStop="False"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding  FontSize}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Content="{TemplateBinding LabelText}"  />
+
+                    <ContentPresenter
+                        Name="PART_editControl"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding  FontSize}"
+                        Foreground="{TemplateBinding Foreground}"
+                        MinWidth="120"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                        Grid.Row="1" />
+
+                    <Border
+                        Name="PART_displayBorder"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        IsTabStop="False"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter
+                            Name="PART_displayControl"
+                            IsTabStop="False"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding  FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsHitTestVisible="False"
+                            MinWidth="120"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

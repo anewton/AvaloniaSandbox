@@ -1,9 +1,10 @@
-<Application 
+<Application
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ScratchApp"
     x:Class="ScratchApp.App"
     xmlns:vm="clr-namespace:ScratchApp.ViewModels;assembly=ScratchApp"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
     x:DataType="vm:AppViewModel"
     x:CompileBindings="True">
     <NativeMenu.Menu>
@@ -22,11 +23,28 @@
             </TrayIcon>
         </TrayIcons>
     </TrayIcon.Icons>
-    
+
     <Application.DataTemplates>
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme Mode="Dark"/>
+        <FluentTheme />
+        <StyleInclude Source="avares://ScratchApp/Controls/Form/FormInput.axaml" />
+        <StyleInclude Source="avares://ScratchApp/Controls/Form/FormInputItemsControl.axaml" />
     </Application.Styles>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Colors-->
+            <Color x:Key="DefaultForegroundColor" >#FFFFFF</Color>
+            <Color x:Key="DefaultBackgroundColor" >#000000</Color>
+            <SolidColorBrush x:Key="DefaultForeground" Color="{DynamicResource DefaultForegroundColor}" />
+            <SolidColorBrush x:Key="DefaultBackground" Color="{DynamicResource DefaultBackgroundColor}" />
+
+            <!--Typography-->
+            <FontFamily x:Key="DefaultFontFamily">Segoe UI</FontFamily>
+            <system:Double x:Key="DefaultFontSize">16</system:Double>
+
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

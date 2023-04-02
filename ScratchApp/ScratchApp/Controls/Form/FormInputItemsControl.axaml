@@ -1,0 +1,19 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ScratchApp.Controls.Form">
+    <Design.PreviewWith>
+        <controls:FormInputItemsControl />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|FormInputItemsControl">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ItemsControl 
+                    Name="PART_itemsControl"
+                    ItemsPanel="{TemplateBinding FormInputsPanel}"
+                    Items="{TemplateBinding FormInputs}">
+                </ItemsControl>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
